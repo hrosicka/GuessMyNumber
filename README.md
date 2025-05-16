@@ -31,3 +31,12 @@ go version
 ```
 
 This should print the installed Go version.
+
+### Installing the Go Extension in VS Code
+
+1.  Open VS Code.
+2.  Click on the square icon on the left sidebar (Extensions).
+3.  In the search bar, type "Go".
+4.  Find the extension named "Go" by "Go Team at Google" and click the "Install" button.
+
+After installing this extension, developing in Go within VS Code will be much more convenient.
