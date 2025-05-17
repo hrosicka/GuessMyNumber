@@ -1,4 +1,4 @@
-# Getting Started with Go: Build a Number Guessing Game!
+# Tutorial: "Guess My Number" Game in Go (For Complete Beginners)
 
 Welcome to this tutorial that will guide you through the basics of the Go programming language by creating a simple number guessing game.
 Go is a modern, compiled programming language designed at Google.
@@ -18,13 +18,13 @@ During this tutorial, you will become familiar with the following Go language co
 * Using loops (`for`).
 * Generating random numbers using the `math/rand` package.
 
-## Prerequisites
+## 1. Installing Go
 
 For this tutorial, you don't need any prior knowledge of Go.
 You should have Go installed on your computer.
 If you don't have it yet, you can download and install it from the [official Go website](https://go.dev/dl/).
 
-After installation, verify that Go is working by opening your terminal and running the command:
+After installation, open your terminal and check the version:
 
 ```bash
 go version
@@ -32,7 +32,11 @@ go version
 
 This should print the installed Go version.
 
-### Installing the Go Extension in VS Code
+---
+
+## 2. Recommended Editor (VS Code)
+
+I recommend using [Visual Studio Code](https://code.visualstudio.com/) and installing the “Go” extension by the Go Team at Google. This will make writing and debugging Go code much easier.
 
 1.  Open VS Code.
 2.  Click on the square icon on the left sidebar (Extensions).
@@ -40,3 +44,30 @@ This should print the installed Go version.
 4.  Find the extension named "Go" by "Go Team at Google" and click the "Install" button.
 
 After installing this extension, developing in Go within VS Code will be much more convenient.
+
+---
+
+## 3. Project Structure
+
+Your main file should be named, for example, `Guess.go`.
+
+---
+
+## 4. How to Run the Program
+
+1. Make sure you are in the folder with this file.
+2. Open your terminal and run:
+
+```bash
+go run Guess.go
+```
+
+3. Follow the instructions in the program.
+
+---
+
+## 5. Tips and Explanations
+
+- Every line of code is commented to help you understand what’s happening.
+- If you want to try your own extension (for example, a limited number of guesses or hints), try modifying the code after completing this basic version.
+
