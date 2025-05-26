@@ -1,5 +1,12 @@
 # 🎲 Tutorial: "Guess My Number" Game in Go (For Complete Beginners) 🎲
 
+![Go for Gold!](https://img.shields.io/badge/Go-for%20Gold-blue?logo=go)
+![Beginner Friendly](https://img.shields.io/badge/Beginner-Friendly-brightgreen)
+![Random Number Enthusiast](https://img.shields.io/badge/Random-Number%20Enthusiast-yellow)
+![Luck Required](https://img.shields.io/badge/Luck-Required-orange)
+![Guessing Game Champion](https://img.shields.io/badge/Guessing-Game%20Champion-blueviolet)
+![MIT Licensed](https://img.shields.io/badge/License-MIT-success)
+
 Welcome, brave explorer! 🚀  
 Ever wondered what Go is and how to have fun with it? Let’s learn the basics by creating a simple number guessing game.  
 Go is a modern language created at Google – it’s fast, friendly, and (almost) never bites. 🐶
