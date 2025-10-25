@@ -13,91 +13,114 @@ import (
 	"time"      // Provides functionality for measuring and displaying time; essential for seeding the random number generator.
 )
 
+// Define the default range for the guessing game as constants.
+const defaultMin = 1
+const defaultMax = 100
+
 // main is the entry point for the executable program.
 func main() {
 	// Initialize a new buffered reader to efficiently read input from the standard input stream (the console).
 	reader := bufio.NewReader(os.Stdin)
 
-	// Define the default range for the guessing game.
-	const defaultMin = 1
-	const defaultMax = 100
-	min := defaultMin
-	max := defaultMax
+	fmt.Println("Welcome to the Number Guessing Game!")
 
-	// Display welcome message and prompt the user for a custom guessing interval.
-	fmt.Println("Welcome to the number guessing game!")
-	fmt.Printf("You can enter your own interval (e.g., '1-50') or press Enter for the default interval (%d-%d).\n", defaultMin, defaultMax)
-	fmt.Print("Your interval choice: ")
-
-	// Read the user's input for the interval choice until a newline character ('\n') is encountered.
-	intervalInput, _ := reader.ReadString('\n')
-	// Remove leading and trailing whitespace, including the newline character.
-	intervalInput = strings.TrimSpace(intervalInput)
-
-	// Process custom interval input if the user entered anything.
-	if intervalInput != "" {
-		// Split the input string based on the '-' delimiter.
-		parts := strings.Split(intervalInput, "-")
-		// Check if the input was split into exactly two parts (min and max).
-		if len(parts) == 2 {
-			// Attempt to convert both parts (after trimming whitespace) into integers.
-			minInput, errMin := strconv.Atoi(strings.TrimSpace(parts[0]))
-			maxInput, errMax := strconv.Atoi(strings.TrimSpace(parts[1]))
-
-			// Validate the conversion and ensure the minimum is strictly less than the maximum.
-			if errMin == nil && errMax == nil && minInput < maxInput {
-				// Success: Update the game's range.
-				min = minInput
-				max = maxInput
-			} else {
-				// Failure: Invalid number format or min >= max. Inform user and keep the default.
-				fmt.Printf("Invalid interval format or range (min >= max). Using the default interval %d-%d.\n", defaultMin, defaultMax)
-			}
-		} else {
-			// Failure: Input was not in the expected 'X-Y' format. Inform user and keep the default.
-			fmt.Printf("Invalid interval format. Using the default interval %d-%d.\n", defaultMin, defaultMax)
-		}
-	}
-
-	// Seed the pseudo-random number generator with the current nanosecond timestamp to ensure different results on each run.
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	// Generate the secret number: r.Intn(n) generates a number in [0, n-1].
-	// To get a number in [min, max], we use r.Intn(max-min+1) + min.
-	secretNumber := r.Intn(max-min+1) + min
-	// Initialize the counter for the number of guessing attempts.
-	attempts := 0
-
-	// Inform the user about the final range chosen for the game.
-	fmt.Printf("I'm thinking of a number between %d and %d. Try to guess it.\n", min, max)
-
-	// Start the main game loop. It continues indefinitely until explicitly broken out of (the correct guess is made).
+	// The outer game loop: this controls the restart functionality.
+	// It continues indefinitely until the user explicitly chooses to quit.
 	for {
-		fmt.Print("Your guess: ")
-		// Read the user's guess input.
-		input, _ := reader.ReadString('\n')
-		// Clean up the input string.
-		input = strings.TrimSpace(input)
+		// --- GAME SETUP AND INTERVAL SELECTION ---
 
-		// Attempt to convert the input string to an integer.
-		guess, err := strconv.Atoi(input)
-		// Check for conversion error (e.g., the user didn't enter a number).
-		if err != nil {
-			fmt.Println("Invalid input. Please enter a number.")
-			continue // Skip the rest of the loop body and start the next iteration.
+		// Reset the guessing range to the default at the start of each new game.
+		min := defaultMin
+		max := defaultMax
+
+		// Prompt the user for a custom guessing interval.
+		fmt.Printf("\nYou can enter your own interval (e.g., '1-50') or press Enter for the default interval (%d-%d).\n", defaultMin, defaultMax)
+		fmt.Print("Your interval choice: ")
+
+		// Read the user's input for the interval choice.
+		intervalInput, _ := reader.ReadString('\n')
+		intervalInput = strings.TrimSpace(intervalInput)
+
+		// Process custom interval input if provided.
+		if intervalInput != "" {
+			parts := strings.Split(intervalInput, "-")
+			if len(parts) == 2 {
+				// Attempt to convert both parts into integers.
+				minInput, errMin := strconv.Atoi(strings.TrimSpace(parts[0]))
+				maxInput, errMax := strconv.Atoi(strings.TrimSpace(parts[1]))
+
+				// Validate the conversion and range.
+				if errMin == nil && errMax == nil && minInput < maxInput {
+					min = minInput
+					max = maxInput
+				} else {
+					fmt.Printf("Invalid interval format or range (min >= max). Using the default interval %d-%d.\n", defaultMin, defaultMax)
+				}
+			} else {
+				fmt.Printf("Invalid interval format. Using the default interval %d-%d.\n", defaultMin, defaultMax)
+			}
 		}
 
-		// A valid guess was made, so increment the attempt counter.
-		attempts++
+		// Initialize the random number generator with a unique seed based on the current time.
+		r := rand.New(rand.NewSource(time.Now().UnixNano()))
+		// Generate the secret number within the chosen range [min, max].
+		secretNumber := r.Intn(max-min+1) + min
+		// Initialize the attempt counter for this round.
+		attempts := 0
 
-		// Compare the guess with the secret number and provide feedback.
-		if guess < secretNumber {
-			fmt.Printf("Too low! Try a number between %d and %d.\n", min, max)
-		} else if guess > secretNumber {
-			fmt.Printf("Too high! Try a number between %d and %d.\n", min, max)
+		// Inform the user about the final game range.
+		fmt.Printf("\nI'm thinking of a number between %d and %d. Try to guess it.\n", min, max)
+
+		// --- MAIN GUESSING LOOP ---
+		// This inner loop handles the actual guessing process for a single game.
+		for {
+			fmt.Print("Your guess: ")
+			// Read and clean the guess input.
+			input, _ := reader.ReadString('\n')
+			input = strings.TrimSpace(input)
+
+			// Attempt to convert the input to an integer.
+			guess, err := strconv.Atoi(input)
+
+			// Handle non-numeric input.
+			if err != nil {
+				fmt.Println("Invalid input. Please enter a number.")
+				continue
+			}
+
+			attempts++
+
+			// Provide feedback to the user.
+			if guess < secretNumber {
+				fmt.Printf("Too low! The number is between %d and %d.\n", min, max)
+			} else if guess > secretNumber {
+				fmt.Printf("Too high! The number is between %d and %d.\n", min, max)
+			} else {
+				// Correct guess: End the game round.
+				fmt.Println("\n*************************************************")
+				fmt.Println("🥳 Correct! You guessed the number", secretNumber, "in", attempts, "attempts!")
+				fmt.Println("*************************************************")
+				break // Exit the INNER guessing loop.
+			}
+		}
+
+		// --- GAME RESTART PROMPT ---
+		// This section asks the user if they want to play another game.
+
+		fmt.Print("Do you want to play again? (y/n): ")
+		// Read the user's choice to continue or quit.
+		restartInput, _ := reader.ReadString('\n')
+		restartInput = strings.TrimSpace(strings.ToLower(restartInput)) // Convert to lowercase for easier check.
+
+		// Check the user's input.
+		if restartInput == "y" || restartInput == "yes" {
+			// If 'y' or 'yes', the outer 'for' loop continues to the next iteration (a new game).
+			fmt.Println("Starting a new game...")
+			continue
 		} else {
-			// The guess is correct. Display the success message and statistics.
-			fmt.Println("Correct! You guessed the number", secretNumber, "in", attempts, "attempts!")
-			break // Exit the 'for' loop, ending the game.
+			// If any other input (like 'n' or anything else), break the outer loop and end the program.
+			fmt.Println("Thanks for playing! Goodbye.")
+			break // Exit the OUTER game loop, ending func main.
 		}
 	}
 }
