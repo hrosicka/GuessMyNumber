@@ -78,3 +78,9 @@ go run Guess.go
 - Every line of code is commented to help you understand what’s happening.
 - If you want to try your own extension (for example, a limited number of guesses or hints), try modifying the code after completing this basic version.
 
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
