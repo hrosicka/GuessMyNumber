@@ -2,20 +2,20 @@
 
 <div align="center">
 
-  <a href="https://github.com/hrosicka/GuessMyNumberGo/stargazers">
-    <img src="https://img.shields.io/github/stars/hrosicka/GuessMyNumberGo?style=for-the-badge&color=4F8EF7&logo=starship&logoColor=white" alt="Stars" />
+  <a href="https://github.com/hrosicka/GuessMyNumber/stargazers">
+    <img src="https://img.shields.io/github/stars/hrosicka/GuessMyNumber?style=for-the-badge&color=4F8EF7&logo=starship&logoColor=white" alt="Stars" />
   </a>
-  <a href="https://github.com/hrosicka/GuessMyNumberGo/network/members">
-    <img src="https://img.shields.io/github/forks/hrosicka/GuessMyNumberGo?style=for-the-badge&color=4F8EF7&logo=git&logoColor=white" alt="Forks" />
+  <a href="https://github.com/hrosicka/GuessMyNumber/network/members">
+    <img src="https://img.shields.io/github/forks/hrosicka/GuessMyNumber?style=for-the-badge&color=4F8EF7&logo=git&logoColor=white" alt="Forks" />
   </a>
-  <a href="https://github.com/hrosicka/GuessMyNumberGo/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/hrosicka/GuessMyNumberGo?style=for-the-badge&color=4F8EF7&logo=github&logoColor=white" alt="Contributors" />
+  <a href="https://github.com/hrosicka/GuessMyNumber/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/hrosicka/GuessMyNumber?style=for-the-badge&color=4F8EF7&logo=github&logoColor=white" alt="Contributors" />
   </a>
-  <a href="https://github.com/hrosicka/GuessMyNumberGo/commits/main">
-    <img src="https://img.shields.io/github/last-commit/hrosicka/GuessMyNumberGo?style=for-the-badge&color=6366F1&logo=githubactions&logoColor=white" alt="Last Commit" />
+  <a href="https://github.com/hrosicka/GuessMyNumber/commits/main">
+    <img src="https://img.shields.io/github/last-commit/hrosicka/GuessMyNumber?style=for-the-badge&color=6366F1&logo=githubactions&logoColor=white" alt="Last Commit" />
   </a>
-  <a href="https://github.com/hrosicka/GuessMyNumberGo/issues">
-    <img src="https://img.shields.io/github/issues/hrosicka/GuessMyNumberGo?style=for-the-badge&color=F59E0B&logo=github&logoColor=white" alt="Issues" />
+  <a href="https://github.com/hrosicka/GuessMyNumber/issues">
+    <img src="https://img.shields.io/github/issues/hrosicka/GuessMyNumber?style=for-the-badge&color=F59E0B&logo=github&logoColor=white" alt="Issues" />
   </a>
   <br/>
 
@@ -25,7 +25,7 @@
   <img src="https://img.shields.io/badge/Type-CLI%20Game-8B5CF6?style=for-the-badge&logo=gnubash&logoColor=white" alt="CLI Game" />
   <img src="https://img.shields.io/badge/Go-For%20Gold-3B82F6?style=for-the-badge&logo=go&logoColor=white" alt="Go for Gold!" />
   <img src="https://img.shields.io/badge/Beginner-Friendly-22C55E?style=for-the-badge&logo=sparkles&logoColor=white" alt="Beginner Friendly" />
-  <img src="https://img.shields.io/github/repo-size/hrosicka/GuessMyNumberGo?style=for-the-badge&color=3B82F6&logo=files&logoColor=white" alt="Repo Size" />
+  <img src="https://img.shields.io/github/repo-size/hrosicka/GuessMyNumber?style=for-the-badge&color=3B82F6&logo=files&logoColor=white" alt="Repo Size" />
   <br/>
 
   <img src="https://img.shields.io/badge/Random-Number%20Enthusiast-EAB308?style=for-the-badge&logo=sparkles&logoColor=white" alt="Random Number Enthusiast" />
